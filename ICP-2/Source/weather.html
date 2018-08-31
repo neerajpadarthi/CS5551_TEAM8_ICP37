@@ -1,0 +1,79 @@
+<html>
+<head>
+    <style>
+        .input
+        {
+            max-width: 250px;
+            color: #333333;
+            font-size: 16px;
+            padding: 10px;
+            border-color: #acc8cc;
+            border-style: solid;
+        }
+        .button {
+            background-color: #acc8cc;
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+        }
+        .tftable {font-size:12px;color:#333333;width:30%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+        .tftable th {font-size:14px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+        .tftable tr {background-color:#d4e3e5;}
+        .tftable td {font-size:12px;border-width:1px;padding:8px;border-style: solid;border-color: #729ea5;}
+        .tftable tr:hover {background-color:#ffffff;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+</head>
+<body bgcolor="#e6ffe6">
+<h1 >Weather Application</h1>
+<div ng-app="weather" ng-controller="weatherctrl">
+    <div class="input">
+        <b>State Code: </b><input ng-model="state"></input>
+        <br/><br/>
+        <b>City Name: </b><input ng-model="city"></input>
+        <br>
+        <br>
+        <button id="btn" class="button" ng-click="getWeather()"><b> Weather Conditions for next 5 Hours</b></button>
+    </div>
+    <br/>
+    <table id="weather" class="tftable" border="1">
+        <tr>
+            <th>Hours</th>
+            <th>Temperature</th>
+            <th>Weather Condition</th>
+        </tr>
+        <tr ng-repeat="x in hourlyweather">
+            <td>{{x.substring(0,x.indexOf('-'))}}</td>
+            <td>{{x.substring(x.indexOf('-',2)+1,x.indexOf('-',3))}}</td>
+            <td>{{x.substring(x.indexOf('-',3)+1,x.indexOf('http')-1)}}<br><img src={{x.substring(x.indexOf('http'))}}></td>
+        </tr>
+    </table>
+</div>
+<script>
+    angular.module('weather',[])
+        .controller('weatherctrl', function($scope, $http) {
+            console.log("hi");
+            $scope.getWeather = function() {
+                $http.get('http://api.wunderground.com/api/4bbbc25f4f5946dd/hourly/q/'+$scope.state+'/'+$scope.city+'.json').success(function(data) {
+                    console.log('City is '+$scope.city);
+                    var weather=[]
+                    for(var i=1;i<6;i++) {
+                        weather.push(new Array(data.hourly_forecast[i].FCTTIME.hour+'-'+data.hourly_forecast[i].temp.english+'-'+data.hourly_forecast[i].condition+'-'+data.hourly_forecast[i].icon_url));
+                    }
+                    console.log(weather.length);
+                    $scope.hourlyweather =[];
+                    for(var x=0;x<weather.length;x++) {
+                        var val= weather[x];
+                        console.log('Data is '+weather[x]);
+                        $scope.hourlyweather.push(val.toString());
+                    }
+                })
+            }
+        });
+</script>
+</body>
+</html>
