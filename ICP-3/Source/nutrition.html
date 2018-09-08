@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+</head>
+<body ng-app="nutrition" ng-controller="nutrotionctrl">
+<div class="col-md-10 col-sm-10">
+            <div class="box-content profile">
+                <h3 class="widget-title">Search Food Item</h3>
+                <form class="contact-form">
+                    <fieldset>
+                        <b><input type="text" style="width: 44%;" class="name" id="food"
+                                  placeholder="Food Item" ng-model="food"></b>
+                        <input type="button" class="button" style="padding:9px 18px;"
+                               value="Find" onclick="hideFunction()"  ng-click="getNutrition()" >
+                    </fieldset>
+                </form>
+            </div>
+</div>
+<div id="resDIV"  style="display:none">
+                <div class="col-md-5 col-sm-5">
+                    <div class="box-content " >
+                        <h3 class="widget-title" >Food Details </h3>
+                        <b>Calories:<input type="text" style="width: 44%;" class="name" ng-model="foodcal"></b>
+                                </br>
+                                </br>
+                        <b>Weight:   <input type="text" style="width: 44%;" class="name" ng-model="foodweight"></b>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-5">
+                    <div class="box-content">
+                        <h3 class="widget-title" >Pronunciation</h3>
+                        <div style="margin-bottom: 15px;">
+                            <audio controls ng-src="{{audioUrl}}">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+</div>
+            <script>
+                angular.module('nutrition',[])
+                    .controller('nutrotionctrl', function($scope, $http, $sce) {
+
+                        payloadNutrition = {
+                            'appId': '64389deb',
+                            'appKey' : '19c54f88a1779efaf243f687acc49844'
+                        };
+
+                        payloadPron = {
+                            'username':'167ae0e0-2a2a-4450-bbf5-51664f851ce0',
+                            'password':'oauBhbrEuZ8j',
+                            'text':'Pneumonoultramicroscopicsilicovolcanoconiosis'
+                             };
+
+
+                        console.log("Value is "+$scope.food);
+
+                        $scope.getNutrition = function() {
+                            if($scope.food)
+                            {
+                            $http.get('https://api.nutritionix.com/v1_1/search/' + $scope.food + '?results=0:1&fields=*&appId=' + payloadNutrition.appId + '&appKey=' + payloadNutrition.appKey).success(function (data) {
+                                    console.log('City is ' + $scope.food);
+                                    nutrition = data.hits[0].fields.nf_calories;
+                                    $scope.foodcal = data.hits[0].fields.nf_calories;
+                                    $scope.foodweight = data.hits[0].fields.nf_serving_weight_grams;
+                                ;
+                                    console.log(nutrition);
+                                }
+                            )
+                            $scope.audioUrl = $sce.trustAsResourceUrl('https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?username=' + payloadPron.username + '&password=' + payloadPron.password + '&text=' + $scope.food);
+                        }
+                        }
+                    });
+
+                function hideFunction() {
+                    var x = document.getElementById("resDIV");
+                    var y = document.getElementById("food");
+                    if (x.style.display === "none"  && y.value!="") {
+                        x.style.display = "block";
+                    }
+                    }
+
+            </script>
+</body>
+</html>
