@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+    <!--<script src="ngStorage.min.js"></script>-->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <!--<script src="bower_components/ngstorage/ngStorage.js"></script>-->
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <!--<script src="ngStorage.min.js"></script>-->
+
+  </head>
+  <body ng-app="starter" >
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <br>
+        <h1 class="title">Login Page</h1>
+
+      </ion-header-bar>
+      <ion-content ng-controller="loginRegister">
+        <script type="text/ng-template" id="error-messages">
+          <div ng-message='required' style="color: red"> This Field is required </div>
+          <div ng-message='minlength' style="color: red"> Too short it should be min of 3 charac</div>
+          <div ng-message='maxlength' style="color: red"> Too long </div>
+        </script>
+          <div class="simple-form-input  box-content " >
+            <form class="form" role="form" id="addEventForm" ng-submit='addEventForm.$valid && eventCtl.submitForm(eventCtl.eventForm)' novalidate name="addEventForm">
+
+              <!--<div class="form-group" ng-class="{'has-error': addEventForm.userName.$touched && addEventForm.userName.$invalid, 'has-success': addEventForm.userName.$touched && addEventForm.userName.$valid }">-->
+                <label class="">
+                  <input type="text" ng-model='userName' required class="form-control"  name="userName" placeholder="User Name" ng-minlength='3' ng-maxlength='50' >
+                </label>
+                <div ng-messages="addEventForm.userName.$dirty && addEventForm.userName.$error">
+                  <div ng-messages-include='error-messages'></div>
+                </div>
+              <!--</div>-->
+              <!--<div class="form-group" ng-class="{'has-error': addEventForm.password.$touched && addEventForm.password.$invalid, 'has-success': addEventForm.password.$touched && addEventForm.password.$valid }">-->
+                <label class="">
+                  <input type="password" ng-model='password' required class="form-control"  name="password" placeholder="Password" ng-minlength='3' ng-maxlength='50'>
+                </label>
+                <div ng-messages="addEventForm.password.$dirty && addEventForm.password.$error">
+                  <div ng-messages-include='error-messages'></div>
+                </div>
+              <!--</div>-->
+
+            </form>
+
+            <br>
+
+            &nbsp;&nbsp;&nbsp;<button class="button button-calm" ng-click="loginPage()">Login</button>
+            <br>
+            &nbsp;&nbsp;&nbsp;<a href="register.html">New User?</a>
+            <br>
+
+
+
+
+            <div style="color: red">&nbsp;&nbsp;&nbsp;{{errortag}}</div>
+      </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
