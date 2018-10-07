@@ -1,0 +1,22 @@
+<ion-view title="Upload Image">
+    <ion-content>
+        <div>
+            <div class="simple-form-input list list-inset">
+                <label class="item item-input">
+                    <input ng-model="username" type="text" placeholder="Username" required/>
+
+                </label>
+                <label class="item item-input">
+                    <input ng-model="password" type="password" placeholder="Password" required/>
+                </label>
+            </div>
+            <div class="padding-left padding-right">
+                <div class="button-bar">
+                    <a class="button" ng-click="login(username, password)">Login</a>
+                    <a class="button" ng-click="register(username, password)">Register</a>
+                </div>
+            </div>
+          <div style="color: red">&nbsp;&nbsp;&nbsp;{{errortag}}</div>
+        </div>
+    </ion-content>
+</ion-view>
