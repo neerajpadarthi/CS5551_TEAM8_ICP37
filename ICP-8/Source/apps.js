@@ -1,8 +1,9 @@
 angular.module('search',[])
     .controller('indexctrl', function($scope, $http) {
         $scope.getSearchResult = function() {
-            $http.get("https://kgsearch.googleapis.com/v1/entities:search?query=" + $scope.searchDestination + "&key=AIzaSyCZbMz2VUDfsNIawl7W9W64FpZp8gsoh10&limit=1&indent=True").success(function (data) {
-                try {
+            // $http.get("https://kgsearch.googleapis.com/v1/entities:search?query=" + $scope.searchDestination + "&key=AIzaSyCZbMz2VUDfsNIawl7W9W64FpZp8gsoh10&limit=1&indent=True").success(function (data) {
+            $http.get('http://127.0.0.1:8081/getData?query='+$scope.searchDestination).success(function (data) {
+            try {
                     console.log(data);
                     $scope.searchDescription = data.itemListElement[0].result.detailedDescription.articleBody;
                     $scope.description = "Description:";
