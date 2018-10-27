@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5499a19-7092-43aa-a85b-56bfc221cd48" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Source/apps.js" beforeDir="false" afterPath="$PROJECT_DIR$/Source/apps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Source/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ICP-9/Source/fonts/FontAwesome.otf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ICP-9/Source/fonts/Roboto-Bold-webfont.eot" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ICP-9/Source/fonts/Roboto-Bold-webfont.svg" beforeDir="false" />
@@ -65,7 +63,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -74,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/apps.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -86,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/knowledgeService.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-127">
-              <caret line="669" lean-forward="true" selection-start-line="669" selection-end-line="669" />
+            <state relative-caret-position="9707">
+              <caret line="571" column="28" lean-forward="true" selection-start-line="571" selection-start-column="28" selection-end-line="571" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
@@ -190,12 +188,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1540621966851</updated>
-      <workItem from="1540621968333" duration="2909000" />
+      <workItem from="1540621968333" duration="3713000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2909000" />
+    <option name="totallyTimeSpent" value="3713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -227,10 +225,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Source/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/knowledgeService.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-127">
-          <caret line="669" lean-forward="true" selection-start-line="669" selection-end-line="669" />
+        <state relative-caret-position="9707">
+          <caret line="571" column="28" lean-forward="true" selection-start-line="571" selection-start-column="28" selection-end-line="571" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
           </folding>
@@ -241,13 +246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="52" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
